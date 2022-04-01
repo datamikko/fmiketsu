@@ -49,8 +49,9 @@ def get_yearly_station_data(
     """
     frames = []
     for year in years:
+        print(f'{year} ', end="")
         to_time = dt.datetime(year, month, day, hour, 0)
         df = get_station_data(to_time=to_time, hours_back=hours_back, location=location, station=station)
         frames.append(df)
-
+    print("All done")
     return pd.concat(frames)

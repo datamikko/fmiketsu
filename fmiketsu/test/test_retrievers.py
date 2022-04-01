@@ -14,7 +14,7 @@ class TestCopy(unittest.TestCase):
             station="Rovaniemi rautatieasema")
 
         print(df.info())
-        self.assertEqual(df.shape[0] > 10, True)
+        self.assertEqual(df.shape[0] > 0, True)
 
     def test_get_yearly_station_data(self):
         df = get_yearly_station_data(years=[1999, 2015, 2020],
@@ -25,7 +25,18 @@ class TestCopy(unittest.TestCase):
                                      location="Rovaniemi",
                                      station="Rovaniemi rautatieasema")
         print(df.info())
-        self.assertEqual(df.shape[0] > 10, True)
+        self.assertEqual(df.shape[0] > 0, True)
+
+    def test_get_yearly_station_data_another(self):
+        df = get_yearly_station_data(years=[1960, 1986, 2020],
+                                     month=2,
+                                     day=1,
+                                     hour=12,
+                                     hours_back=1,
+                                     location="apukka",
+                                     station="Rovaniemi Apukka")
+        print(df.info())
+        self.assertEqual(df.shape[0] > 0, True)
 
     def test_from_to_fmi_times(self):
         from_time, to_time = from_to_fmi_times(to_time=dt.datetime(2000, 1, 2, 0, 0), hours_back=24)
