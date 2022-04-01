@@ -19,6 +19,7 @@ Use pip to install or upgrade to newest version:
 
 ## Example
 
+    from fmiketsu.retrievers import get_yearly_station_data
     df = get_yearly_station_data(years=[1999, 2015, 2020],
                                  month=2,
                                  day=1,
